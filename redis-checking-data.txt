@@ -1,0 +1,86 @@
+To check the Redis server data in Windows, after installing Redis and setting the environment variable, you can follow these steps to interact with Redis:
+
+### 1. **Ensure Redis is Running**
+First, confirm that the Redis server is running on your Windows machine.
+
+1. Open a command prompt (`cmd`) or PowerShell.
+2. Type the following command to start the Redis server:
+   ```bash
+   redis-server
+   ```
+   This will start the Redis server. You should see logs that indicate the server is running.
+
+If you haven't yet started Redis, this is a necessary step before interacting with it.
+
+### 2. **Check Redis Server Status**
+Once the Redis server is running, open another command prompt or PowerShell window, and use the following command to check Redis server status:
+
+```bash
+redis-cli ping
+```
+
+If the server is running, you should see a response like:
+
+```
+PONG
+```
+
+### 3. **View Redis Data**
+To check the data stored in your Redis server, you can use the `redis-cli` (Redis command-line interface). Here are a few commands that can help you inspect data:
+
+- **View all keys:**
+  To list all the keys stored in Redis, you can use:
+  ```bash
+  redis-cli keys "*"
+  ```
+  This command will display all the keys currently stored in the Redis database.
+
+- **Check data for a specific key:**
+  To retrieve the value of a specific key, use the `get` command if the value is a string:
+  ```bash
+  redis-cli get <key_name>
+  ```
+  Replace `<key_name>` with the actual key you want to inspect.
+
+- **View more detailed information:**
+  For more complex types (like lists, sets, hashes), you can use other commands like:
+
+  - For **list** type data:
+    ```bash
+    redis-cli lrange <list_key> 0 -1
+    ```
+
+  - For **set** type data:
+    ```bash
+    redis-cli smembers <set_key>
+    ```
+
+  - For **hash** type data:
+    ```bash
+    redis-cli hgetall <hash_key>
+    ```
+
+### 4. **Check Redis Configuration**
+If you want to view the configuration settings for Redis, you can run:
+```bash
+redis-cli config get *
+```
+This will output the configuration parameters of your Redis instance.
+
+### Troubleshooting
+If you get an error when trying to execute `redis-cli` commands, make sure:
+- Redis is running.
+- You’ve correctly added Redis to your system’s PATH environment variable.
+
+
+
+
+
+
+
+FOR DELETE DATA IN REDIS COMMAND
+$ del "\xac\xed\x00\x05t\x00\bproducts"
+
+GET CHECK DATA GET DATA
+$ get <KEY-NAME>
+example: get product-by-id1

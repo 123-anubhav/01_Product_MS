@@ -1,0 +1,22 @@
+# Resilience4j Circuit Breaker Configuration for productService
+resilience4j.circuitbreaker.instances.productService.register-health-indicator=true
+resilience4j.circuitbreaker.instances.productService.sliding-window-size=20
+resilience4j.circuitbreaker.instances.productService.minimum-number-of-calls=5
+resilience4j.circuitbreaker.instances.productService.failure-rate-threshold=50
+resilience4j.circuitbreaker.instances.productService.wait-duration-in-open-state=10s
+resilience4j.circuitbreaker.instances.productService.permitted-number-of-calls-in-half-open-state=3
+Explanation
+Each property corresponds to a YAML setting, ensuring the circuit breaker works as intended:
+
+register-health-indicator: Enables health indicators for this circuit breaker.
+sliding-window-size: Determines how many calls to keep in the rolling window for calculating failure rates.
+minimum-number-of-calls: Specifies the minimum number of calls before the circuit breaker evaluates the failure rate.
+failure-rate-threshold: The percentage of failures required to open the circuit breaker.
+wait-duration-in-open-state: Time the circuit breaker remains open before transitioning to half-open.
+permitted-number-of-calls-in-half-open-state: Number of test calls allowed in the half-open state.
+
+
+Observe how the circuit breaker transitions between states:
+CLOSED: Normal state, all requests go through.
+OPEN: Requests fail due to the threshold.
+HALF-OPEN: Limited requests are allowed to test recovery.
